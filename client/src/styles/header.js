@@ -5,8 +5,8 @@ const Header = styled.div`
   display: flex;
   position: sticky;
   justify-content: space-between;
-  margin-left: 40px;
-  margin-right: 50px;
+  margin-inline: 50px;
+  padding-inline: 15px;
   height: ${navBarHg};
   align-items: center;
   border-bottom: solid 2px grey;

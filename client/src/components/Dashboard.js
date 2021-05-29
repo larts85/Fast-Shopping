@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
+import Board from "../styles/dashboard";
 import { fetchAllProducts } from "../api/products";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllProducts } from "../store/products/products.actions";
+import ProductCard from "./ProductCard";
 
 const Dashboard = (props) => {
   const { isMobile } = props;
@@ -22,7 +23,13 @@ const Dashboard = (props) => {
     }
   }, []);
 
-  return <Box></Box>;
+  return (
+    <Board>
+      {products?.map((product, index) => {
+        return <ProductCard productData={product} key={index} />;
+      })}
+    </Board>
+  );
 };
 
 Dashboard.propTypes = {
