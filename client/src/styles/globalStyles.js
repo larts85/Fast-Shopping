@@ -1,4 +1,6 @@
-const size = {
+import styled from "styled-components";
+
+export const size = {
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "425px",
@@ -8,7 +10,7 @@ const size = {
   desktop: "2560px",
 };
 
-const device = {
+export const device = {
   mobileS: `(max-width: ${size.mobileS})`,
   mobileM: `(max-width: ${size.mobileM})`,
   mobileL: `(max-width: ${size.mobileL})`,
@@ -19,14 +21,21 @@ const device = {
   desktopL: `(max-width: ${size.desktop})`,
 };
 
-const colors = {
+export const colors = {
   white: "#ffffff",
 };
 
-module.exports = {
-  device,
-  colors,
-  footerHg: "100px",
-  navBarHg: "100px",
-  pngShadow: "drop-shadow(2px 2px 3px rgb(0, 0, 0))",
-};
+export const Button = styled.button`
+  padding: 5px;
+  padding-inline: 10px;
+  border: solid 2px;
+  background-color: transparent;
+  box-shadow: 2px 2px 2px black;
+  outline: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+`;
+export const footerHg = "100px";
+export const navBarHg = "100px";
+export const pngShadow = "drop-shadow(2px 2px 3px rgb(0, 0, 0))";
