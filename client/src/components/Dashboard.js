@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Box, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {},
-}));
+import { Box } from "@material-ui/core";
+import { fetchAllProducts } from "../api/products";
 
 const Dashboard = (props) => {
-  const classes = useStyles();
   const { isMobile } = props;
+  const [products, setProducts] = useState([]);
 
-  return <Box className={classes.root}></Box>;
+  useEffect(() => {
+    fetchAllProducts()
+      .then(({ data }) => {
+        setProducts(data);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }, []);
+
+  return <Box></Box>;
 };
 
 Dashboard.propTypes = {
