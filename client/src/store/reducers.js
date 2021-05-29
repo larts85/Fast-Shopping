@@ -6,13 +6,11 @@ import OrderlineReducer from "./orderline/orderline.reducer";
 
 const persistConfig = {
   key: "root",
-  // blacklist: [],
-  // whitelist: [],
   storage: AsyncStorage,
 };
 
 export default persistCombineReducers(persistConfig, {
-  productsReducer: ProductsReducer,
-  orderReducer: OrderReducer,
-  orderline: OrderlineReducer,
+  products: ProductsReducer,
+  order: OrderReducer,
+  orderlines: OrderlineReducer,
 });
