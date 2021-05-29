@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
+import { FooTer } from "../styles/footer";
+import Pagination from "./Pagination";
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-}));
+const Footer = ({ pagination }) => {
+  const { page, rowsPerPage, handleChangePage, handleChangeRowsPerPage } =
+    pagination;
 
-const Footer = (props) => {
-  const { isMobile } = props;
+  const { products } = useSelector((state) => state.products);
 
-  const classes = useStyles();
-
-  return <Box className={classes.root}></Box>;
+  return (
+    <FooTer>
+      <Pagination
+        pagination={{
+          productsQuantity: products?.length,
+          handleChangePage,
+          handleChangeRowsPerPage,
+          page,
+          rowsPerPage,
+        }}
+      />
+    </FooTer>
+  );
 };
 
 Footer.propTypes = {
