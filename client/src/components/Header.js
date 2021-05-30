@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HeaderComponent, { Title } from "../styles/header";
 import { Badge } from "@material-ui/core";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Header = (props) => {
-  const { isMobile } = props;
+const Header = () => {
+  const location = useLocation();
+  const { cart } = useSelector((state) => state.orderlines);
 
   return (
     <HeaderComponent>
       <Title>
-        <img src="/logo512.png" alt="Ups" />
+        <Link to="/">
+          <img src="/logo512.png" alt="Ups" />
+        </Link>
         <h1>Fast Shopping</h1>
       </Title>
-      <Badge badgeContent={4} color="error">
-        <ShoppingCartIcon style={{ color: "grey", fontSize: 40 }} />
-      </Badge>
+      {location.pathname !== "/cart" && (
+        <Link to={cart.length ? "/cart" : "/"}>
+          <Badge badgeContent={cart.length} color="error">
+            <ShoppingCartIcon style={{ color: "grey", fontSize: 40 }} />
+          </Badge>
+        </Link>
+      )}
     </HeaderComponent>
   );
 };

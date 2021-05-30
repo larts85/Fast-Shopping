@@ -5,6 +5,7 @@ import IsMobile from "ismobilejs";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Cart from "./components/Cart";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -36,10 +37,13 @@ function App() {
     <div className="App">
       <Router>
         <Route path="/">
-          <Header isMobile={isMobile} />
+          <Header />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Dashboard isMobile={isMobile} pagination={pagination} />
+        </Route>
+        <Route exact path="/cart">
+          <Cart isMobile={isMobile} />
         </Route>
         <Route exact path="/">
           <Footer isMobile={isMobile} pagination={pagination} />
