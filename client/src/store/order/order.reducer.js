@@ -1,7 +1,7 @@
 import * as actions from "../constants-actions";
 
 const initialState = {
-  order: [],
+  order: {},
 };
 
 export default function orderReducer(state = initialState, action) {
