@@ -1,7 +1,10 @@
 import * as actions from "../constants-actions";
 
 const initialState = {
-  order: {},
+  order: {
+    costumerData: {},
+  },
+  total: 0,
 };
 
 export default function orderReducer(state = initialState, action) {
@@ -15,6 +18,20 @@ export default function orderReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case actions.MODIFY_TOTAL:
+      return {
+        ...state,
+        total: action.payload,
+      };
+    case actions.SET_FINISHED_ORDER:
+      return {
+        ...state,
+        order: {
+          ...state.order,
+          costumerData: action.payload,
+        },
+      };
+
     default:
       return state;
   }

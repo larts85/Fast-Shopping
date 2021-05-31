@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import { SuccessScreen } from "./components/SuccessScreen";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/cart">
           <Cart isMobile={isMobile} />
+        </Route>
+        <Route exact path="/thanks">
+          <SuccessScreen />
         </Route>
         <Route exact path="/">
           <Footer isMobile={isMobile} pagination={pagination} />

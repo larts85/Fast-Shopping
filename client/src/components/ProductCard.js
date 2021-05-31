@@ -11,7 +11,7 @@ import {
 import { Button } from "../styles/globalStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { setCreatedOrderline } from "../store/orderline/orderline.actions";
-import { createOrderline } from "../api/orderlines";
+// import { createOrderline } from "../api/orderlines";
 
 const ProductCard = (props) => {
   const { productData } = props;
@@ -22,12 +22,14 @@ const ProductCard = (props) => {
   useEffect(() => {
     const alreadyOnCart = cart.find(({ id }) => id === productData.id);
     alreadyOnCart && setProductOnCart(true);
+    // eslint-disable-next-line
   }, [cart.length]);
 
   const addToCart = () => {
     // createOrderline().then(({status, data}) => {
     //   if (status === 'OK') {
-    //     dispatch(setCreatedOrderline(data));
+    //     dispatch(setCreatedOrder(data.order));
+    //     dispatch(setCreatedOrderline(data.orderline));
     //   }
     // }).catch((error) => {throw error})
     dispatch(

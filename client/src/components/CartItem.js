@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   CardItem,
@@ -11,14 +11,15 @@ import {
 } from "../styles/cartItem";
 import { IconButton } from "@material-ui/core";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
+import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCartProduct,
   updateCartProduct,
 } from "../store/orderline/orderline.actions";
-import { Button } from "../styles/globalStyles";
 
 const CartItem = (props = {}) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { orderline, stock } = props;
   const { id, name, category, price, quantity } = orderline || {};
@@ -28,7 +29,7 @@ const CartItem = (props = {}) => {
 
   const handleOnDelete = () => {
     if (cart.length === 1) {
-      window.location = "/";
+      history.push("/");
     }
     dispatch(deleteCartProduct(id));
   };
@@ -78,9 +79,14 @@ const CartItem = (props = {}) => {
 
 CartItem.propTypes = {
   props: PropTypes.shape({
-    sum: PropTypes.number,
-    setSum: PropTypes.func,
-    product: PropTypes.object,
+    stock: PropTypes.number,
+    orderline: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      category: PropTypes.string,
+      price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      quantity: PropTypes.number,
+    }),
   }),
 };
 

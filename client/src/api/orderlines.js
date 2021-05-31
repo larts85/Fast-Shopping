@@ -6,4 +6,7 @@ const createOrderline = async (orderline) =>
 const updateOrderline = async (update) =>
   await axios.put(`http://localhost:4000/orderlines`, update);
 
-export { createOrderline, updateOrderline };
+const deleteOrderline = async (orderlineId) =>
+  await axios.delete(`http://localhost:4000/orderlines/${orderlineId}`);
+
+export { createOrderline, updateOrderline, deleteOrderline };

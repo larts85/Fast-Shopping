@@ -6,11 +6,24 @@ const setCreatedOrder = (order) => (dispatch) => {
     payload: order,
   });
 };
+const setFinishedOrder = (order) => (dispatch) => {
+  dispatch({
+    type: actions.SET_FINISHED_ORDER,
+    payload: order,
+  });
+};
 
-const deleteOrder = () => async (dispatch) => {
+const deleteOrder = () => (dispatch) => {
   dispatch({
     type: actions.DELETE_ORDER,
   });
 };
 
-export { setCreatedOrder, deleteOrder };
+const modifyTotal = (update) => (dispatch) => {
+  dispatch({
+    type: actions.MODIFY_TOTAL,
+    payload: update,
+  });
+};
+
+export { setCreatedOrder, modifyTotal, deleteOrder, setFinishedOrder };

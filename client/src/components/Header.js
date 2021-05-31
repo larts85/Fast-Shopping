@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HeaderComponent, { Title } from "../styles/header";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Badge } from "@material-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const Header = () => {
         </Link>
         <h1>Fast Shopping</h1>
       </Title>
-      {location.pathname !== "/cart" && (
+      {location.pathname === "/" && (
         <Link to={cart.length ? "/cart" : "/"}>
           <Badge badgeContent={cart.length} color="error">
             <ShoppingCartIcon style={{ color: "grey", fontSize: 40 }} />

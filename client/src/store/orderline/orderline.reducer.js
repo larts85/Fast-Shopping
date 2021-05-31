@@ -4,7 +4,6 @@ const initialState = {
   cart: [],
   products: [],
   cartProducts: [],
-  total: 0,
 };
 
 export default function orderlineReducer(state = initialState, action) {
@@ -23,11 +22,6 @@ export default function orderlineReducer(state = initialState, action) {
       return {
         ...state,
         cart: action.payload,
-      };
-    case actions.MODIFY_TOTAL:
-      return {
-        ...state,
-        total: action.payload,
       };
     case actions.GET_PRODUCTS_FROM_CART:
       return {
