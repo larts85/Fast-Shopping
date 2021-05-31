@@ -1,13 +1,19 @@
 const express = require("express");
 const app = express();
-const Products = require("../models/products");
+const Product = require("../models/products");
+const Category = require("../models/categories");
 
 app.get("/", async (req, res) => {
-  Products.findAll()
-    .then((user) => res.json(user))
-    .catch((err) => {
-      throw err;
+  try {
+    const products = await Product.findAll({
+      include: [{ model: Category }],
     });
+    console.log({ products });
+    return res.json(products);
+  } catch (error) {
+    res.status(400).send(error);
+    throw error;
+  }
 });
 
 module.exports = app;

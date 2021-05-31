@@ -1,85 +1,164 @@
 const { Sequelize, Model } = require("sequelize");
-const sequelize = require("../../db");
+const sequelize = require("../db");
 const S = Sequelize;
+// const Orders = require("./orders");
+// const Orderlines = require("./orderlines");
+const Category = require("./categories");
 
-class Products extends Model {}
-Products.init(
-  {
-    id: {
-      type: S.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    name: {
-      type: S.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Este campo no puede estar vacío",
-        },
-        len: {
-          msg: "El nombre debe tener entre 5 y 40 caracteres",
-        },
+const Products = sequelize.define("products", {
+  id: {
+    type: S.INTEGER,
+    primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
+  },
+  category_id: {
+    type: S.INTEGER,
+    allowNull: false,
+    // references: {
+    //   model: "categories",
+    //   key: "id",
+    // },
+  },
+  name: {
+    type: S.STRING,
+    allowNull: false,
+    validate: {
+      notNull: {
+        msg: "Name is mandatory",
       },
-    },
-    description: {
-      type: S.TEXT,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Este campo no puede estar vacío",
-        },
-        len: {
-          msg: "La descripción debe tener entre 20 y 255 caracteres",
-        },
-      },
-    },
-    price: {
-      type: S.DECIMAL(9, 2),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Se requiere un precio",
-        },
-        isDecimal: {
-          msg: 'El precio debe contener sus decimales (centavos), de ser un precio exacto puede incluir "00"',
-        },
-        min: {
-          args: [0],
-          msg: "El precio no puede ser menor que 0,00",
-        },
-        max: {
-          args: [999999999],
-          msg: "El precio no puede contener más de 9 dígitos delante de la coma.",
-        },
-      },
-    },
-    stock: {
-      type: S.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Se requiere al menos un producto en stock",
-        },
-        isInt: {
-          msg: "El stock debe ser un número entero",
-        },
-        min: {
-          args: [0],
-          msg: 'El stock no puede ser menor a "0"',
-        },
-        max: {
-          args: [999999999],
-          msg: "El stock no puede contener más de 9 dígitos delante de la coma.",
-        },
+      len: {
+        arg: [5, 40],
+        msg: "Descripción must have between 5 y 40 characters",
       },
     },
   },
-  {
-    sequelize,
-    modelName: "products",
-  }
-);
+  description: {
+    type: S.TEXT,
+    allowNull: false,
+    validate: {
+      notNull: {
+        msg: "Description is mandatory",
+      },
+      len: {
+        arg: [1, 255],
+        msg: "Descripción must have between 20 y 255 characters",
+      },
+    },
+  },
+  price: {
+    type: S.DECIMAL(9, 2),
+    allowNull: false,
+    validate: {
+      notNull: {
+        msg: "Price is mandatory",
+      },
+    },
+  },
+  stock: {
+    type: S.INTEGER,
+    allowNull: false,
+    validate: {
+      notNull: {
+        msg: "Minimun stock is one",
+      },
+      isInt: {
+        msg: "Stock must be an integer",
+      },
+      min: {
+        args: [0],
+        msg: "Minimun stock is one",
+      },
+    },
+  },
+});
 
 module.exports = Products;
+// class Product extends Model {}
+// Product.init(
+//   {
+//     id: {
+//       type: S.INTEGER,
+//       primaryKey: true,
+//       allowNull: false,
+//       autoIncrement: true,
+//     },
+//     category_id: {
+//       type: S.INTEGER,
+//       allowNull: false,
+//       // references: {
+//       //   model: "categories",
+//       //   key: "id",
+//       // },
+//     },
+//     name: {
+//       type: S.STRING,
+//       allowNull: false,
+//       validate: {
+//         notNull: {
+//           msg: "Name is mandatory",
+//         },
+//         len: {
+//           arg: [5, 40],
+//           msg: "Descripción must have between 5 y 40 characters",
+//         },
+//       },
+//     },
+//     description: {
+//       type: S.TEXT,
+//       allowNull: false,
+//       validate: {
+//         notNull: {
+//           msg: "Description is mandatory",
+//         },
+//         len: {
+//           arg: [1, 255],
+//           msg: "Descripción must have between 20 y 255 characters",
+//         },
+//       },
+//     },
+//     price: {
+//       type: S.DECIMAL(9, 2),
+//       allowNull: false,
+//       validate: {
+//         notNull: {
+//           msg: "Price is mandatory",
+//         },
+//       },
+//     },
+//     stock: {
+//       type: S.INTEGER,
+//       allowNull: false,
+//       validate: {
+//         notNull: {
+//           msg: "Minimun stock is one",
+//         },
+//         isInt: {
+//           msg: "Stock must be an integer",
+//         },
+//         min: {
+//           args: [0],
+//           msg: "Minimun stock is one",
+//         },
+//       },
+//     },
+//   },
+//   {
+//     sequelize,
+//     modelName: "product",
+//     charset: "utf8",
+//     collate: "utf8_general_ci",
+//     underscored: true,
+//   }
+// );
+// Product.belongsTo(Category);
+
+// Products.hasOne(Orderlines);
+// Products.associate = (models) => {
+//   Products.belongsToMany(models.orders, {
+//     through: { model: Orderlines },
+//     foreignKey: "products_id",
+//   });
+// };
+
+// module.exports = Product;
