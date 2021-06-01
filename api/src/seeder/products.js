@@ -3,7 +3,6 @@ const Products = require("../models/products.models");
 const productsSeeder = async () => {
   await Products.bulkCreate([
     {
-      categoriesId: 2,
       name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
       description:
         "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
@@ -11,7 +10,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 3,
       name: "Mens Casual Premium Slim Fit T-Shirts ",
       price: 22.3,
       description:
@@ -19,7 +17,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 3,
       name: "Mens Cotton Jacket",
       price: 55.99,
       description:
@@ -27,7 +24,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 3,
       name: "Mens Casual Slim Fit",
       price: 15.99,
       description:
@@ -35,7 +31,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 2,
       name: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
       price: 695,
       description:
@@ -43,7 +38,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 2,
       name: "Sol Petite Micropave ",
       price: 168,
       description:
@@ -51,7 +45,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 2,
       name: "White Gold Plated Princess",
       price: 9.99,
       description:
@@ -59,7 +52,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 2,
       name: "Pierced Owl Rose Gold Plated Stainless Steel Double",
       price: 10.99,
       description:
@@ -67,7 +59,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
       price: 64,
       description:
@@ -75,7 +66,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
       price: 109,
       description:
@@ -83,7 +73,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
       price: 109,
       description:
@@ -91,7 +80,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
       price: 114,
       description:
@@ -99,7 +87,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
       price: 599,
       description:
@@ -107,7 +94,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 1,
       name: "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultraw QLED ",
       price: 999.99,
       description:
@@ -115,7 +101,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
       price: 56.99,
       description:
@@ -123,7 +108,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
       price: 29.95,
       description:
@@ -131,7 +115,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
       price: 39.99,
       description:
@@ -139,7 +122,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "MBJ Women's Sol Sleeve Boat Neck V ",
       price: 9.85,
       description:
@@ -147,7 +129,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "Opna Women's Short Sleeve Moisture",
       price: 7.95,
       description:
@@ -155,7 +136,6 @@ const productsSeeder = async () => {
       stock: Math.floor(Math.random() * 100),
     },
     {
-      categoriesId: 4,
       name: "DANVOUY Womens T Shirt Casual Cotton Short",
       price: 12.99,
       description:

@@ -8,7 +8,10 @@ const routes = require("./src/routes/index.js");
 const sequelize = require("./src/db");
 
 const { productsSeeder } = require("./src/seeder/products.js");
-const { categoriesSeeder } = require("./src/seeder/categories.js");
+const {
+  categoriesSeeder,
+  categoy_productSeder,
+} = require("./src/seeder/categories.js");
 
 const PORT = process.env.PORT || 4000;
 app.name = "API";
@@ -30,8 +33,10 @@ sequelize
   .then(() => {
     // sequelize.query("set FOREIGN_KEY_CHECKS=0");
     console.log("Connected successfully to Database");
+
     // categoriesSeeder();
     // productsSeeder();
+    // categoy_productSeder();
 
     app.listen(PORT, () => {
       console.log(`Server is running on Port ${PORT}`);
