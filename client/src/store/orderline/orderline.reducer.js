@@ -2,8 +2,6 @@ import * as actions from "../constants-actions";
 
 const initialState = {
   cart: [],
-  products: [],
-  cartProducts: [],
 };
 
 export default function orderlineReducer(state = initialState, action) {
@@ -16,7 +14,7 @@ export default function orderlineReducer(state = initialState, action) {
     case actions.DELETE_CART_ITEM:
       return {
         ...state,
-        cart: state.cart.filter((e) => e?.id !== action.payload),
+        cart: state.cart.filter((e) => e?.productsId !== action.payload),
       };
     case actions.UPDATE_CART_PRODUCT:
       return {
@@ -30,7 +28,7 @@ export default function orderlineReducer(state = initialState, action) {
       };
     case actions.EMPTY_CART:
       return {
-        ...state,
+        cart: [],
       };
     default:
       return state;

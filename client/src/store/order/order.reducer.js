@@ -16,7 +16,10 @@ export default function orderReducer(state = initialState, action) {
       };
     case actions.DELETE_ORDER:
       return {
-        ...state,
+        order: {
+          costumerData: {},
+        },
+        total: 0,
       };
     case actions.MODIFY_TOTAL:
       return {

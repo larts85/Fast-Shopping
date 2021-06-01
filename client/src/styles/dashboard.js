@@ -5,14 +5,11 @@ const Dashboard = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-inline: 30px;
+  padding-block: 30px;
   @media ${device.mobileM} {
     padding: 10px;
   }
 `;
-export const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+
 export default Dashboard;

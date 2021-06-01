@@ -15,7 +15,7 @@ const Pagination = ({ pagination }) => {
     <>
       <TablePagination
         labelRowsPerPage="Products per page"
-        rowsPerPageOptions={[5, 10, 15, 20, 25, { label: "All", value: -1 }]}
+        rowsPerPageOptions={[20]}
         component="div"
         count={productsQuantity}
         rowsPerPage={rowsPerPage}

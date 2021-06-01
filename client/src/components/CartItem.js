@@ -22,7 +22,7 @@ const CartItem = (props = {}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { orderline, stock } = props;
-  const { id, name, category, price, quantity } = orderline || {};
+  const { productsId, name, categories, price, quantity } = orderline || {};
   const { cart } = useSelector((state) => state.orderlines);
 
   const subTotal = Number(price) * quantity;
@@ -31,16 +31,22 @@ const CartItem = (props = {}) => {
     if (cart.length === 1) {
       history.push("/");
     }
-    dispatch(deleteCartProduct(id));
+    dispatch(deleteCartProduct(productsId));
   };
 
   const handleOnChange = (event) => {
     const quantitySelected = event.target.value;
     const subTotal = Number(price) * quantitySelected;
-    const newCart = cart.filter(({ id }) => id !== orderline.id);
+    const newCart = cart.filter(
+      ({ productsId }) => productsId !== orderline.productsId
+    );
     const updatedCart = [
       ...newCart,
-      { ...orderline, quantity: quantitySelected, subTotal },
+      {
+        ...orderline,
+        quantity: Number(quantitySelected),
+        subTotal,
+      },
     ];
     dispatch(updateCartProduct(updatedCart));
   };
@@ -49,7 +55,7 @@ const CartItem = (props = {}) => {
     <CardItem>
       <Title>
         <h4>{name}</h4>
-        <h6>Category: {category}</h6>
+        <h6>{categories.name}</h6>
       </Title>
       <SecondHalf>
         <PriceWrapper>
@@ -81,7 +87,7 @@ CartItem.propTypes = {
   props: PropTypes.shape({
     stock: PropTypes.number,
     orderline: PropTypes.shape({
-      id: PropTypes.number,
+      productsId: PropTypes.number,
       name: PropTypes.string,
       category: PropTypes.string,
       price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

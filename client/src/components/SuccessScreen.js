@@ -5,7 +5,6 @@ import { Congratulations } from "../styles/successScreen";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOrder } from "../store/order/order.actions";
-import { emptyCart } from "../store/orderline/orderline.actions";
 
 export const SuccessScreen = () => {
   const history = useHistory();
@@ -16,7 +15,6 @@ export const SuccessScreen = () => {
     fullName.substr(0, fullName.indexOf(" "));
 
   const emptyOrderStore = () => {
-    dispatch(emptyCart());
     dispatch(deleteOrder());
     history.push("/");
   };

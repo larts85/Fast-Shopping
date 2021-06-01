@@ -6,8 +6,10 @@ import CartItem from "./CartItem";
 import CustomerForm from "./CustomerForm";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { modifyTotal } from "../store/order/order.actions";
+import { modifyTotal, setCreatedOrder } from "../store/order/order.actions";
 import { setFinishedOrder } from "../store/order/order.actions";
+import { finishOrder } from "../api/orders";
+import { emptyCart } from "../store/orderline/orderline.actions";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -53,12 +55,12 @@ const Cart = () => {
       (acumulator, currentVlue) => acumulator + currentVlue.subTotal,
       0
     );
-    dispatch(modifyTotal(Number.parseFloat(total).toFixed(2)));
+    dispatch(modifyTotal(total));
     // eslint-disable-next-line
   }, [cart]);
 
   const getStock = (orderlineId) => {
-    return products.find(({ id }) => id === orderlineId).stock;
+    return products.find(({ id }) => id === orderlineId)?.stock;
   };
 
   const handleSubmit = (event) => {
@@ -70,8 +72,27 @@ const Cart = () => {
       phone: formRows.phone.value,
       email: formRows.email.value,
     };
-    dispatch(setFinishedOrder(userData));
-    history.push("/thanks");
+    const orderlines = [];
+    cart.map(({ productsId, quantity, subTotal }) => {
+      orderlines.push({ productsId, quantity, subTotal });
+    });
+    finishOrder({
+      total,
+      orderlines,
+    })
+      .then(({ status, data }) => {
+        if (status === 200) {
+          dispatch(setCreatedOrder(data));
+          dispatch(setFinishedOrder(userData));
+          dispatch(emptyCart());
+        }
+      })
+      .finally(() => {
+        history.push("/thanks");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleChange = (event) => {
@@ -94,13 +115,16 @@ const Cart = () => {
       {cart.map((orderline, index) => {
         return (
           <div key={index}>
-            <CartItem orderline={orderline} stock={getStock(orderline.id)} />
+            <CartItem
+              orderline={orderline}
+              stock={getStock(orderline.productsId)}
+            />
           </div>
         );
       })}
       <Total>
         <h2>
-          Total: <span>${total}</span>
+          Total: <span>${total.toFixed(2)}</span>
         </h2>
       </Total>
       <Title>Ready to order?</Title>
