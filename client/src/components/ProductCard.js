@@ -10,8 +10,10 @@ import {
 } from "../styles/card";
 import { Button } from "../styles/globalStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreatedOrderline } from "../store/orderline/orderline.actions";
-import { createOrderline } from "../api/orderlines";
+import {
+  setCreatedOrderline,
+  updateCartProduct,
+} from "../store/orderline/orderline.actions";
 
 const ProductCard = (props) => {
   const { productData } = props;
@@ -20,29 +22,47 @@ const ProductCard = (props) => {
   const { cart } = useSelector((state) => state.orderlines);
 
   useEffect(() => {
-    const alreadyOnCart = cart.find(({ id }) => id === productData.id);
-    alreadyOnCart && setProductOnCart(true);
-  }, [cart.length]);
+    if (!productData.stock) {
+      setProductOnCart(true);
+    }
+    // eslint-disable-next-line
+  }, [cart]);
 
   const addToCart = () => {
-    // createOrderline().then(({status, data}) => {
-    //   if (status === 'OK') {
-    //     dispatch(setCreatedOrderline(data));
-    //   }
-    // }).catch((error) => {throw error})
-    dispatch(
-      setCreatedOrderline({
-        ...productData,
-        quantity: 1,
-        subTotal: Number(productData.price),
-      })
+    const productToUpdate = cart.find(
+      ({ productsId }) => productsId === productData.id
     );
+    if (!productToUpdate) {
+      dispatch(
+        setCreatedOrderline({
+          ...productData,
+          id: null,
+          productsId: productData.id,
+          quantity: 1,
+          subTotal: Number(productData.price),
+        })
+      );
+    } else {
+      const newCart = cart.filter(
+        ({ productsId }) => productsId !== productData.id
+      );
+      const subTotal = productToUpdate.price * (productToUpdate.quantity + 1);
+      const updatedCart = [
+        ...newCart,
+        {
+          ...productToUpdate,
+          quantity: productToUpdate.quantity + 1,
+          subTotal,
+        },
+      ];
+      dispatch(updateCartProduct(updatedCart));
+    }
   };
 
   return (
     <CardComponent>
       <Title>{productData?.name}</Title>
-      <SubTitle>Category: {productData?.category}</SubTitle>
+      <SubTitle>{productData?.categories.name}</SubTitle>
       <Description className="p">
         <p>{productData?.description}</p>
       </Description>
@@ -51,7 +71,6 @@ const ProductCard = (props) => {
           <Button disabled={productOnCart} onClick={addToCart}>
             Add to cart
           </Button>
-          &nbsp;&nbsp;{productData?.stock} stock
         </span>
         <Price>{productData?.price}</Price>
       </CardFooter>

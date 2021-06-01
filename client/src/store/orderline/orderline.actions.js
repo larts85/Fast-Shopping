@@ -7,30 +7,24 @@ const setCreatedOrderline = (orderline) => (dispatch) => {
   });
 };
 
-const deleteCartProduct = (orderlineId) => async (dispatch) => {
+const deleteCartProduct = (orderlineId) => (dispatch) => {
   dispatch({
     type: actions.DELETE_CART_ITEM,
     payload: orderlineId,
   });
 };
 
-const updateCartProduct = (update) => async (dispatch) => {
+const updateCartProduct = (update) => (dispatch) => {
   dispatch({
     type: actions.UPDATE_CART_PRODUCT,
     payload: update,
   });
 };
 
-const modifyTotal = (update) => async (dispatch) => {
+const emptyCart = () => (dispatch) => {
   dispatch({
-    type: actions.MODIFY_TOTAL,
-    payload: update,
+    type: actions.EMPTY_CART,
   });
 };
 
-export {
-  setCreatedOrderline,
-  updateCartProduct,
-  deleteCartProduct,
-  modifyTotal,
-};
+export { setCreatedOrderline, updateCartProduct, deleteCartProduct, emptyCart };

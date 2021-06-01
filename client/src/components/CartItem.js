@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   CardItem,
@@ -11,35 +11,42 @@ import {
 } from "../styles/cartItem";
 import { IconButton } from "@material-ui/core";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
+import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCartProduct,
   updateCartProduct,
 } from "../store/orderline/orderline.actions";
-import { Button } from "../styles/globalStyles";
 
 const CartItem = (props = {}) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { orderline, stock } = props;
-  const { id, name, category, price, quantity } = orderline || {};
+  const { productsId, name, categories, price, quantity } = orderline || {};
   const { cart } = useSelector((state) => state.orderlines);
 
   const subTotal = Number(price) * quantity;
 
   const handleOnDelete = () => {
     if (cart.length === 1) {
-      window.location = "/";
+      history.push("/");
     }
-    dispatch(deleteCartProduct(id));
+    dispatch(deleteCartProduct(productsId));
   };
 
   const handleOnChange = (event) => {
     const quantitySelected = event.target.value;
     const subTotal = Number(price) * quantitySelected;
-    const newCart = cart.filter(({ id }) => id !== orderline.id);
+    const newCart = cart.filter(
+      ({ productsId }) => productsId !== orderline.productsId
+    );
     const updatedCart = [
       ...newCart,
-      { ...orderline, quantity: quantitySelected, subTotal },
+      {
+        ...orderline,
+        quantity: Number(quantitySelected),
+        subTotal,
+      },
     ];
     dispatch(updateCartProduct(updatedCart));
   };
@@ -48,7 +55,7 @@ const CartItem = (props = {}) => {
     <CardItem>
       <Title>
         <h4>{name}</h4>
-        <h6>Category: {category}</h6>
+        <h6>{categories.name}</h6>
       </Title>
       <SecondHalf>
         <PriceWrapper>
@@ -78,9 +85,14 @@ const CartItem = (props = {}) => {
 
 CartItem.propTypes = {
   props: PropTypes.shape({
-    sum: PropTypes.number,
-    setSum: PropTypes.func,
-    product: PropTypes.object,
+    stock: PropTypes.number,
+    orderline: PropTypes.shape({
+      productsId: PropTypes.number,
+      name: PropTypes.string,
+      category: PropTypes.string,
+      price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      quantity: PropTypes.number,
+    }),
   }),
 };
 

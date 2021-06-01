@@ -3,10 +3,11 @@ import AsyncStorage from "@react-native-community/async-storage";
 import ProductsReducer from "./products/products.reducer";
 import OrderReducer from "./order/order.reducer";
 import OrderlineReducer from "./orderline/orderline.reducer";
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
   key: "root",
-  storage: AsyncStorage,
+  storage: storage,
 };
 
 export default persistCombineReducers(persistConfig, {

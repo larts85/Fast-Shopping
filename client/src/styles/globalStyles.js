@@ -28,12 +28,15 @@ export const colors = {
 export const Button = styled.button`
   padding: 5px;
   padding-inline: 10px;
+  font-weight: bold;
   border: solid 2px;
   background-color: transparent;
   box-shadow: 2px 2px 2px black;
   outline: none;
+  cursor: ${(props) => (props.disabled ? "initial" : "pointer")};
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${(props) =>
+      props.disabled ? "transparent" : "rgba(0, 0, 0, 0.08)"};
   }
 `;
 export const footerHg = "100px";

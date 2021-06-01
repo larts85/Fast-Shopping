@@ -3,7 +3,8 @@ import { device } from "./globalStyles";
 
 const Cart = styled.div`
   padding-inline: 50px;
-  padding-block: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   @media ${device.mobileM} {
     padding: 20px;
   }
@@ -17,6 +18,15 @@ export const Total = styled.div`
   & h2 {
     margin: 0;
     margin-right: 3px;
+  }
+`;
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  & a {
+    color: #235e9e;
+    font-weight: 500;
+    margin-left: 20px;
   }
 `;
 

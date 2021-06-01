@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import { SuccessScreen } from "./components/SuccessScreen";
+import { persistor } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(20);
 
   useEffect(() => {
     const userAgent = window.navigator;
@@ -35,20 +38,25 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Route path="/">
-          <Header />
-        </Route>
-        <Route exact path="/">
-          <Dashboard isMobile={isMobile} pagination={pagination} />
-        </Route>
-        <Route exact path="/cart">
-          <Cart isMobile={isMobile} />
-        </Route>
-        <Route exact path="/">
-          <Footer isMobile={isMobile} pagination={pagination} />
-        </Route>
-      </Router>
+      <PersistGate persistor={persistor}>
+        <Router>
+          <Route path="/">
+            <Header />
+          </Route>
+          <Route exact path="/">
+            <Dashboard isMobile={isMobile} pagination={pagination} />
+          </Route>
+          <Route exact path="/cart">
+            <Cart isMobile={isMobile} />
+          </Route>
+          <Route exact path="/thanks">
+            <SuccessScreen />
+          </Route>
+          <Route exact path="/">
+            <Footer isMobile={isMobile} pagination={pagination} />
+          </Route>
+        </Router>
+      </PersistGate>
     </div>
   );
 }
