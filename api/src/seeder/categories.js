@@ -1,11 +1,11 @@
-const Category = require("../models/categories");
+const Categories = require("../models/categories.models");
 
-const categoriesSeeder = () => {
-  Category.bulkCreate([
-    { name: "Electronics" },
-    { name: "Jewelery" },
-    { name: "Men's clothing" },
-    { name: "Women's clothing" },
+const categoriesSeeder = async () => {
+  await Categories.bulkCreate([
+    { id: 1, name: "Electronics" },
+    { id: 2, name: "Jewelery" },
+    { id: 3, name: "Men's clothing" },
+    { id: 4, name: "Women's clothing" },
   ]);
 };
 

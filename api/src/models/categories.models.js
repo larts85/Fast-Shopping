@@ -1,19 +1,6 @@
-const { Sequelize, Model } = require("sequelize");
+const { Sequelize } = require("sequelize");
 const sequelize = require("../db");
 const S = Sequelize;
-const Product = require("./products");
-
-// class Category extends Model {}
-// Category.init(
-//   ,{
-//     sequelize,
-//     modelName: "category",
-//     charset: "utf8",
-//     collate: "utf8_general_ci",
-//     underscored: true,
-//   }
-// )
-// module.exports = Category;
 
 const Categories = sequelize.define("categories", {
   id: {
