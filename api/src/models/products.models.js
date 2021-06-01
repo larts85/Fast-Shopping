@@ -10,10 +10,6 @@ const Products = sequelize.define("products", {
     allowNull: false,
     autoIncrement: true,
   },
-  categoriesId: {
-    type: S.INTEGER,
-    allowNull: false,
-  },
   name: {
     type: S.STRING,
     allowNull: false,
@@ -67,6 +63,7 @@ const Products = sequelize.define("products", {
   },
 });
 
-Products.belongsTo(Categories, { as: "categories" });
+Products.belongsToMany(Categories, { through: "category_product" });
+Categories.belongsToMany(Products, { through: "category_product" });
 
 module.exports = Products;
