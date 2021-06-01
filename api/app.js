@@ -1,19 +1,21 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+const { json, urlencoded } = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./src/routes/index.js");
 
-const sequelize = require("./db");
+const sequelize = require("./src/db");
 
-// const { productsSeeder } = require("./seeder/products.js");
-// const { categoriesSeeder } = require("./seeder/categories.js");
+const { productsSeeder } = require("./src/seeder/products.js");
+const { categoriesSeeder } = require("./src/seeder/categories.js");
 
 const PORT = process.env.PORT || 4000;
 app.name = "API";
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
+
 app.use(morgan("dev"));
 app.use(
   cors({
@@ -26,10 +28,10 @@ app.use("/", routes);
 sequelize
   .sync({ force: false })
   .then(() => {
+    // sequelize.query("set FOREIGN_KEY_CHECKS=0");
     console.log("Connected successfully to Database");
-
-    // productsSeeder();
     // categoriesSeeder();
+    // productsSeeder();
 
     app.listen(PORT, () => {
       console.log(`Server is running on Port ${PORT}`);
