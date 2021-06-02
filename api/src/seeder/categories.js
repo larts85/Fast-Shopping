@@ -12,19 +12,17 @@ const categoriesSeeder = async () => {
 
 // This function create several relationships between categories and products
 function categoy_productSeder() {
-  for (let i = 1; i < 21; i++) {
-    Products.findByPk(i).then((product) => {
-      Categories.findByPk(i).then((category) => {
-        product.addCategory(category);
+  for (let j = 4; j > 0; j--) {
+    for (let i = 1; i < 21; i++) {
+      if (i === j || j / i === 0) {
+        continue;
+      }
+      Products.findByPk(i).then((product) => {
+        Categories.findByPk(j).then((category) => {
+          product.addCategory(category);
+        });
       });
-    });
-  }
-  for (let i = 1; i < 5; i++) {
-    Products.findByPk(i).then((product) => {
-      Categories.findByPk(5 - i).then((category) => {
-        product.addCategory(category);
-      });
-    });
+    }
   }
 }
 

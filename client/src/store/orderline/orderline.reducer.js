@@ -21,11 +21,6 @@ export default function orderlineReducer(state = initialState, action) {
         ...state,
         cart: action.payload,
       };
-    case actions.GET_PRODUCTS_FROM_CART:
-      return {
-        ...state,
-        cartProducts: action.payload,
-      };
     case actions.EMPTY_CART:
       return {
         cart: [],
