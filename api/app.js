@@ -7,6 +7,11 @@ const routes = require("./src/routes/index.js");
 
 const sequelize = require("./src/db");
 
+/* 
+  Uncomment this and bottom code and at the same time set sync({force: true}) 
+  to populate the db. Also you can use some express routes with postman or other software
+*/
+
 // const {
 //   categoriesSeeder,
 //   categoy_productSeder,
@@ -31,7 +36,6 @@ app.use("/", routes);
 sequelize
   .sync({ force: false })
   .then(() => {
-    // sequelize.query("set FOREIGN_KEY_CHECKS=0");
     console.log("Connected successfully to Database");
 
     // categoriesSeeder();
