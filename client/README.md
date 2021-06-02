@@ -4,10 +4,10 @@
 
 #### TECHNOLOGIES
 
-| **FullStack** | ✔          | ✔           | ✔             | ✔             | ✔                 | ✔           | ✔   |
+| **FullStack** | ✔          | ✔          | ✔            | ✔             | ✔                 | ✔           | ✔   |
 | ------------- | ---------- | ----------- | ------------- | ------------- | ----------------- | ----------- | --- | --- | --- |
 | **Languages** | JavaScript |             |               |               |                   |             |     |
-| **Frontend**  | React Js   | React-Redux | Redux-Persist | React-Routing | Styled-Components | Material UI |
+| **Frontend**  | React Js   | React-Redux | Redux-Persist | React-Routing | Styled-Components | Material UI |    |
 | **Backend**   | NodeJs     | Express     | SQL           | Sequelize     | MySQL             |             |     |     |     |
 
 ## First Steps
@@ -33,6 +33,7 @@ Frontend is running in localhost 3000 while backend does at port 4000.
 ### **I hope you enjoy navigating as much as i do coding** 😎
 
 ## ER Diagram
+![image](https://user-images.githubusercontent.com/68341136/120415324-bc9aaf80-c331-11eb-8b88-884a127c4f7e.png)
 
 ## SQL Scripts
 
