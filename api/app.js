@@ -7,11 +7,11 @@ const routes = require("./src/routes/index.js");
 
 const sequelize = require("./src/db");
 
-const { productsSeeder } = require("./src/seeder/products.js");
-const {
-  categoriesSeeder,
-  categoy_productSeder,
-} = require("./src/seeder/categories.js");
+// const {
+//   categoriesSeeder,
+//   categoy_productSeder,
+// } = require("./src/seeder/categories.js");
+// const { productsSeeder } = require("./src/seeder/products.js");
 
 const PORT = process.env.PORT || 4000;
 app.name = "API";

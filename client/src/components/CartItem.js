@@ -19,10 +19,10 @@ import {
 } from "../store/orderline/orderline.actions";
 
 const CartItem = (props = {}) => {
-  const history = useHistory();
-  const dispatch = useDispatch();
   const { orderline, stock } = props;
   const { productsId, name, categories, price, quantity } = orderline || {};
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { cart } = useSelector((state) => state.orderlines);
 
   const subTotal = Number(price) * quantity;
@@ -55,7 +55,7 @@ const CartItem = (props = {}) => {
     <CardItem>
       <Title>
         <h4>{name}</h4>
-        <h6>{categories.name}</h6>
+        <h6>{categories}</h6>
       </Title>
       <SecondHalf>
         <PriceWrapper>

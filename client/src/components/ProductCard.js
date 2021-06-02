@@ -20,6 +20,22 @@ const ProductCard = (props) => {
   const dispatch = useDispatch();
   const [productOnCart, setProductOnCart] = useState(false);
   const { cart } = useSelector((state) => state.orderlines);
+  const [categories, setCategories] = useState("");
+
+  useEffect(() => {
+    const prepareCategoriesToDisplay = () => {
+      let stringOfCategories = "";
+      productData.categories.forEach(({ name }) => {
+        stringOfCategories
+          ? (stringOfCategories += ", " + name)
+          : (stringOfCategories += name);
+      });
+      setCategories(stringOfCategories);
+    };
+
+    prepareCategoriesToDisplay();
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (!productData.stock) {
@@ -39,6 +55,7 @@ const ProductCard = (props) => {
           id: null,
           productsId: productData.id,
           quantity: 1,
+          categories,
           subTotal: Number(productData.price),
         })
       );
@@ -62,7 +79,7 @@ const ProductCard = (props) => {
   return (
     <CardComponent>
       <Title>{productData?.name}</Title>
-      <SubTitle>{productData?.categories.name}</SubTitle>
+      <SubTitle>{categories}</SubTitle>
       <Description className="p">
         <p>{productData?.description}</p>
       </Description>
