@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TablePagination } from "@material-ui/core";
+import { Theme } from "../styles/globalStyles";
 
-const Pagination = ({ pagination }) => {
+const Pagination = ({ pagination, mode }) => {
   const {
     productsQuantity,
     page,
@@ -14,6 +15,7 @@ const Pagination = ({ pagination }) => {
   return (
     <>
       <TablePagination
+        style={{ color: Theme[mode].colors.text }}
         labelRowsPerPage="Products per page"
         rowsPerPageOptions={[20]}
         component="div"

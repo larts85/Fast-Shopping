@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./globalStyles";
+import { device, Theme } from "./globalStyles";
 
 const CardComponent = styled.div`
   display: flex;
@@ -13,6 +13,10 @@ const CardComponent = styled.div`
   padding-left: 25px;
   margin: 20px;
   border: solid 3px;
+  background-color: ${(props) => Theme[props.mode]?.colors.bgSecondary};
+  color: ${(props) => Theme[props.mode]?.colors.text};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
   @media ${device.mobileL} {
     transform: scale(0.9);
   }

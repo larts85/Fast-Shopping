@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import Board, { PaginationWrapper } from "../styles/dashboard";
+import Board from "../styles/dashboard";
 import ProductCard from "./ProductCard";
 import { fetchAllProducts } from "../api/products";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllProducts } from "../store/products/products.actions";
 
 const Dashboard = (props) => {
-  const { pagination } = props;
+  const { pagination, darkMode, rounded } = props;
   const { page, rowsPerPage } = pagination;
 
   const dispatch = useDispatch();
@@ -38,9 +38,16 @@ const Dashboard = (props) => {
       <Helmet>
         <title>Products List</title>
       </Helmet>
-      <Board>
+      <Board mode={darkMode} rounded={rounded}>
         {filteredProducts.map((product, index) => {
-          return <ProductCard productData={product} key={index} />;
+          return (
+            <ProductCard
+              productData={product}
+              key={index}
+              darkMode={darkMode}
+              rounded={rounded}
+            />
+          );
         })}
       </Board>
     </>

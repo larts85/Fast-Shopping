@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { Button } from "./button";
 
-export const size = {
+const size = {
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "425px",
@@ -10,7 +10,7 @@ export const size = {
   desktop: "2560px",
 };
 
-export const device = {
+const device = {
   mobileS: `(max-width: ${size.mobileS})`,
   mobileM: `(max-width: ${size.mobileM})`,
   mobileL: `(max-width: ${size.mobileL})`,
@@ -21,24 +21,39 @@ export const device = {
   desktopL: `(max-width: ${size.desktop})`,
 };
 
-export const colors = {
-  white: "#ffffff",
+const Theme = {
+  darkMode: {
+    colors: {
+      bgPrimary: "#333333",
+      bgSecondary: "#292929",
+      text: "#e9e9e9",
+      borderColor: "#e9e9e9",
+      shadows: "",
+      hover: "#b2b2b2",
+      disable: "#000",
+    },
+  },
+  lightMode: {
+    colors: {
+      bgPrimary: "#ffffff",
+      bgSecondary: "#eeeeee",
+      text: "#333333",
+      borderColor: "#2d2d2d",
+      shadows: "2px 2px 2px black",
+      hover: "#d3d3d3",
+      disable: "#d3d3d3",
+    },
+  },
+  rounded: {
+    borderRadius: "12px",
+  },
+  cornered: {
+    borderRadius: 0,
+  },
 };
 
-export const Button = styled.button`
-  padding: 5px;
-  padding-inline: 10px;
-  font-weight: bold;
-  border: solid 2px;
-  background-color: transparent;
-  box-shadow: 2px 2px 2px black;
-  outline: none;
-  cursor: ${(props) => (props.disabled ? "initial" : "pointer")};
-  &:hover {
-    background-color: ${(props) =>
-      props.disabled ? "transparent" : "rgba(0, 0, 0, 0.08)"};
-  }
-`;
-export const footerHg = "100px";
-export const navBarHg = "100px";
-export const pngShadow = "drop-shadow(2px 2px 3px rgb(0, 0, 0))";
+const footerHg = "100px";
+const navBarHg = "100px";
+const pngShadow = "drop-shadow(2px 2px 3px rgb(0, 0, 0))";
+
+export { Theme, Button, footerHg, navBarHg, pngShadow, device };
