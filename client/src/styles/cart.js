@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { device } from "./globalStyles";
+import { device, Theme } from "./globalStyles";
 
 const Cart = styled.div`
   padding-inline: 50px;
   padding-top: 20px;
   padding-bottom: 40px;
+  color: ${(props) => Theme[props.mode]?.colors.text};
   @media ${device.mobileM} {
     padding: 20px;
   }

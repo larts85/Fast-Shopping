@@ -1,15 +1,14 @@
-import { device, navBarHg } from "./globalStyles";
+import { device, navBarHg, Theme } from "./globalStyles";
 import styled from "styled-components";
 
-const Header = styled.div`
+const Header = styled.header`
   display: flex;
   position: sticky;
   justify-content: space-between;
-  margin-inline: 50px;
-  padding-inline: 15px;
+  padding-inline: 65px;
   height: ${navBarHg};
   align-items: center;
-  border-bottom: solid 2px grey;
+  color: ${(props) => Theme[props.mode]?.colors.text};
   @media ${device.tablet} {
     justify-content: space-evenly;
     padding: 10px;
@@ -20,6 +19,11 @@ const Header = styled.div`
     padding: 10px;
     height: 200px;
   }
+`;
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
 `;
 
 export const Title = styled.div`
@@ -33,6 +37,13 @@ export const Title = styled.div`
   & h1 {
     letter-spacing: 1px;
   }
+`;
+export const Divider = styled.hr`
+  background-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  height: 3px;
+  margin-inline: 50px;
+  margin-block: 0;
 `;
 
 export default Header;

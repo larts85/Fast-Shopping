@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOrder } from "../store/order/order.actions";
 
-export const SuccessScreen = () => {
+export const SuccessScreen = ({ darkMode, rounded }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { order } = useSelector((state) => state.order);
@@ -30,7 +30,13 @@ export const SuccessScreen = () => {
       )}, we have created your order #${
         order.id || Date.now()
       }. Your items will be soon at your door.`}</h2>
-      <Button onClick={() => emptyOrderStore()}>Start Again</Button>
+      <Button
+        mode={darkMode}
+        border={rounded}
+        onClick={() => emptyOrderStore()}
+      >
+        Start Again
+      </Button>
     </Congratulations>
   );
 };

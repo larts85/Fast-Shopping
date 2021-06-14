@@ -14,3 +14,7 @@ export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 export const UPDATE_CART_PRODUCT = "UPDATE_CART_PRODUCT";
 export const EMPTY_CART = "EMPTY_CART";
 export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
+
+//themes
+export const SET_MODE = "SET_MODE";
+export const SET_BORDER = "SET_BORDER";

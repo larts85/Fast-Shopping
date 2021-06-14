@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
-import IsMobile from "ismobilejs";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -9,16 +8,28 @@ import Cart from "./components/Cart";
 import { SuccessScreen } from "./components/SuccessScreen";
 import { persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import { getInitialBorder, getInitialMode } from "./utils/themes-management";
+import { Theme } from "./styles/globalStyles";
 
 function App() {
-  const [isMobile, setIsMobile] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
+  const [darkMode, setDarkMode] = useState(getInitialMode());
+  const [rounded, setRounded] = useState(getInitialBorder());
+
+  const body = document.getElementsByTagName("body")[0];
+  const mode = darkMode ? "darkMode" : "lightMode";
+  const border = rounded ? "rounded" : "cornered";
 
   useEffect(() => {
-    const userAgent = window.navigator;
-    setIsMobile(IsMobile(userAgent).any);
-  }, []);
+    localStorage.setItem("dark", JSON.stringify(darkMode));
+    body.style.setProperty("--bg-color", Theme[mode].colors.bgPrimary);
+    body.style.setProperty("--text-color", Theme[mode].colors.text);
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem("rounded", JSON.stringify(rounded));
+  }, [rounded]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -41,19 +52,29 @@ function App() {
       <PersistGate persistor={persistor}>
         <Router>
           <Route path="/">
-            <Header />
+            <Header
+              mode={mode}
+              darkMode={darkMode}
+              rounded={rounded}
+              setDarkMode={setDarkMode}
+              setRounded={setRounded}
+            />
           </Route>
           <Route exact path="/">
-            <Dashboard isMobile={isMobile} pagination={pagination} />
+            <Dashboard
+              pagination={pagination}
+              darkMode={mode}
+              rounded={border}
+            />
           </Route>
           <Route exact path="/cart">
-            <Cart isMobile={isMobile} />
+            <Cart darkMode={mode} rounded={border} />
           </Route>
           <Route exact path="/thanks">
-            <SuccessScreen />
+            <SuccessScreen darkMode={mode} rounded={border} />
           </Route>
           <Route exact path="/">
-            <Footer isMobile={isMobile} pagination={pagination} />
+            <Footer pagination={pagination} darkMode={mode} rounded={border} />
           </Route>
         </Router>
       </PersistGate>

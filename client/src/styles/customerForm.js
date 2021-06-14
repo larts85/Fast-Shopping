@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./globalStyles";
+import { device, Theme } from "./globalStyles";
 
 export const FormWrapper = styled.div`
   margin: 20px;
@@ -10,6 +10,9 @@ export const FormWrapper = styled.div`
 export const Form = styled.div`
   padding: 15px;
   border: solid 3px;
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
+  background-color: ${(props) => Theme[props.mode]?.colors.bgSecondary};
   padding-right: 55px;
   flex-grow: 1;
   @media ${`(max-width: 500px)`} {
@@ -51,7 +54,14 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  border: solid 2px black;
+  outline: none;
+  border: solid 2px;
+  padding: 5px;
+  padding-left: 10px;
+  color: ${(props) => Theme[props.mode]?.colors.text};
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
   text-align: left;
   line-height: 22px;
   width: 75%;
@@ -60,9 +70,15 @@ export const Input = styled.input`
   }
 `;
 export const TextArea = styled.textarea`
+  outline: none;
+  padding: 10px;
+  color: ${(props) => Theme[props.mode]?.colors.text};
   width: 75%;
   min-height: 28px;
   border: solid 2px black;
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
   resize: vertical;
   @media ${`(max-width: 500px)`} {
     width: 100%;

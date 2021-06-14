@@ -4,15 +4,16 @@ import { useSelector } from "react-redux";
 import { FooTer } from "../styles/footer";
 import Pagination from "./Pagination";
 
-const Footer = ({ pagination }) => {
+const Footer = ({ pagination, darkMode, rounded }) => {
   const { page, rowsPerPage, handleChangePage, handleChangeRowsPerPage } =
     pagination;
 
   const { products } = useSelector((state) => state.products);
 
   return (
-    <FooTer>
+    <FooTer mode={darkMode} border={rounded}>
       <Pagination
+        mode={darkMode}
         pagination={{
           productsQuantity: products?.length,
           handleChangePage,

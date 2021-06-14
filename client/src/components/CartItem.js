@@ -17,9 +17,10 @@ import {
   deleteCartProduct,
   updateCartProduct,
 } from "../store/orderline/orderline.actions";
+import { Theme } from "../styles/globalStyles";
 
 const CartItem = (props = {}) => {
-  const { orderline, stock } = props;
+  const { orderline, stock, mode, border } = props;
   const { productsId, name, categories, price, quantity } = orderline || {};
   const dispatch = useDispatch();
   const history = useHistory();
@@ -52,7 +53,7 @@ const CartItem = (props = {}) => {
   };
 
   return (
-    <CardItem>
+    <CardItem mode={mode} border={border}>
       <Title>
         <h4>{name}</h4>
         <h6>{categories}</h6>
@@ -73,7 +74,7 @@ const CartItem = (props = {}) => {
           </Picker>
         </Quantity>
         <IconButton onClick={handleOnDelete}>
-          <DeleteForeverSharpIcon />
+          <DeleteForeverSharpIcon style={{ color: Theme[mode].colors.text }} />
         </IconButton>
         <Price margin="auto" fontSize="21px" width="80px">
           {subTotal}

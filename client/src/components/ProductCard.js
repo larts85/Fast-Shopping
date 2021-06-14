@@ -16,7 +16,7 @@ import {
 } from "../store/orderline/orderline.actions";
 
 const ProductCard = (props) => {
-  const { productData } = props;
+  const { productData, darkMode, rounded } = props;
   const dispatch = useDispatch();
   const [productOnCart, setProductOnCart] = useState(false);
   const { cart } = useSelector((state) => state.orderlines);
@@ -77,7 +77,7 @@ const ProductCard = (props) => {
   };
 
   return (
-    <CardComponent>
+    <CardComponent mode={darkMode} border={rounded}>
       <Title>{productData?.name}</Title>
       <SubTitle>{categories}</SubTitle>
       <Description className="p">
@@ -85,7 +85,12 @@ const ProductCard = (props) => {
       </Description>
       <CardFooter>
         <span>
-          <Button disabled={productOnCart} onClick={addToCart}>
+          <Button
+            disabled={productOnCart}
+            onClick={addToCart}
+            mode={darkMode}
+            border={rounded}
+          >
             Add to cart
           </Button>
         </span>

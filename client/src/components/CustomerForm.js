@@ -12,10 +12,10 @@ import {
 } from "../styles/customerForm";
 
 const CustomerForm = (props) => {
-  const { formRows, handleChange } = props;
+  const { formRows, handleChange, mode, border } = props;
   return (
     <FormWrapper>
-      <Form>
+      <Form mode={mode} border={border}>
         <FormTitle>Customer Information</FormTitle>
         {Object.entries(formRows).map(([key, content], index) => {
           const { label, type, value, required, name } = content;
@@ -27,6 +27,8 @@ const CustomerForm = (props) => {
               </Label>
               <TextArea
                 required={required}
+                mode={mode}
+                border={border}
                 rows="3"
                 onChange={(event) => handleChange(event)}
               />
@@ -41,6 +43,8 @@ const CustomerForm = (props) => {
                 name={name}
                 required={required}
                 id={name}
+                mode={mode}
+                border={border}
                 value={value}
                 type={type}
                 onChange={(event) => handleChange(event)}
