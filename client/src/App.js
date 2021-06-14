@@ -9,6 +9,7 @@ import { SuccessScreen } from "./components/SuccessScreen";
 import { persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import { getInitialBorder, getInitialMode } from "./utils/themes-management";
+import { Theme } from "./styles/globalStyles";
 
 function App() {
   const [page, setPage] = useState(0);
@@ -16,11 +17,13 @@ function App() {
   const [darkMode, setDarkMode] = useState(getInitialMode());
   const [rounded, setRounded] = useState(getInitialBorder());
 
+  const body = document.getElementsByTagName("body")[0];
   const mode = darkMode ? "darkMode" : "lightMode";
   const border = rounded ? "rounded" : "cornered";
 
   useEffect(() => {
     localStorage.setItem("dark", JSON.stringify(darkMode));
+    body.style.setProperty("--bg-color", Theme[mode].colors.bgPrimary);
   }, [darkMode]);
 
   useEffect(() => {

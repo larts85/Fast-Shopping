@@ -9,7 +9,6 @@ const Header = styled.header`
   height: ${navBarHg};
   align-items: center;
   color: ${(props) => Theme[props.mode]?.colors.text};
-  background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
   @media ${device.tablet} {
     justify-content: space-evenly;
     padding: 10px;
@@ -39,15 +38,12 @@ export const Title = styled.div`
     letter-spacing: 1px;
   }
 `;
-export const Divider = styled.div`
-  background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
-  & hr {
-    background-color: ${(props) => Theme[props.mode]?.colors.borderColor};
-    color: ${(props) => Theme[props.mode]?.colors.borderColor};
-    height: 3px;
-    margin-inline: 50px;
-    margin-block: 0;
-  }
+export const Divider = styled.hr`
+  background-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  height: 3px;
+  margin-inline: 50px;
+  margin-block: 0;
 `;
 
 export default Header;

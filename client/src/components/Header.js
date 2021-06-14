@@ -52,9 +52,7 @@ const Header = (props) => {
           )}
         </Actions>
       </HeaderComponent>
-      <Divider mode={mode}>
-        <hr />
-      </Divider>
+      <Divider mode={mode} />
     </>
   );
 };

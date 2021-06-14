@@ -9,7 +9,6 @@ export const FooTer = styled.div`
   min-height: 50px;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => Theme[props.mode].colors.bgPrimary};
   color: ${(props) => Theme[props.mode]?.colors.text};
   @media ${device.mobileL} {
     justify-content: flex-start;

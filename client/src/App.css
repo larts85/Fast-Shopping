@@ -15,8 +15,12 @@ h6 {
   font-family: "Comic Neue";
 }
 
+body {
+  background-color: var(--bg-color);
+}
 body::-webkit-scrollbar {
   width: 12px;
+  background-color: #6e6e70;
 }
 body::-webkit-scrollbar-track {
   box-shadow: none;
