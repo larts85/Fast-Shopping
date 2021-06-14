@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./globalStyles";
+import { device, Theme } from "./globalStyles";
 
 export const CardItem = styled.div`
   display: flex;
@@ -11,6 +11,9 @@ export const CardItem = styled.div`
   margin: 20px;
   margin-inline: 0;
   border: solid 3px;
+  background-color: ${(props) => Theme[props.mode]?.colors.bgSecondary};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
   & button {
     flex-grow: 1;
     display: flex;

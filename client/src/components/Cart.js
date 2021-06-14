@@ -11,7 +11,7 @@ import { setFinishedOrder } from "../store/order/order.actions";
 import { finishOrder } from "../api/orders";
 import { emptyCart } from "../store/orderline/orderline.actions";
 
-const Cart = () => {
+const Cart = ({ darkMode, rounded }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { cart } = useSelector((state) => state.orderlines);
@@ -116,6 +116,8 @@ const Cart = () => {
         return (
           <div key={index}>
             <CartItem
+              mode={darkMode}
+              border={rounded}
               orderline={orderline}
               stock={getStock(orderline.productsId)}
             />
@@ -129,9 +131,16 @@ const Cart = () => {
       </Total>
       <Title>Ready to order?</Title>
       <form onSubmit={handleSubmit}>
-        <CustomerForm formRows={formRows} handleChange={handleChange} />
+        <CustomerForm
+          formRows={formRows}
+          handleChange={handleChange}
+          mode={darkMode}
+          border={rounded}
+        />
         <Actions>
-          <Button type="submit">Place Order</Button>
+          <Button mode={darkMode} border={rounded} type="submit">
+            Place Order
+          </Button>
           <Link to="/">Back to List</Link>
         </Actions>
       </form>

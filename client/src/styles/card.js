@@ -14,7 +14,6 @@ const CardComponent = styled.div`
   margin: 20px;
   border: solid 3px;
   background-color: ${(props) => Theme[props.mode]?.colors.bgSecondary};
-  color: ${(props) => Theme[props.mode]?.colors.text};
   border-radius: ${(props) => Theme[props.border].borderRadius};
   border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
   @media ${device.mobileL} {

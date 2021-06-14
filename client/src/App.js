@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("dark", JSON.stringify(darkMode));
     body.style.setProperty("--bg-color", Theme[mode].colors.bgPrimary);
+    body.style.setProperty("--text-color", Theme[mode].colors.text);
   }, [darkMode]);
 
   useEffect(() => {
