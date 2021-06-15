@@ -16,7 +16,10 @@ export const Button = styled.button`
       : Theme[props.mode].colors.borderColor};
   border-radius: ${(props) => Theme[props.border].borderRadius};
   background-color: ${(props) => Theme[props.mode].colors.bgPrimary};
-  box-shadow: ${(props) => Theme[props.mode].colors.shadows};
+  box-shadow: ${(props) =>
+    props.disabled
+      ? Theme[props.mode].colors.disabledShadow
+      : Theme[props.mode].colors.shadows};
   outline: none;
   cursor: ${(props) => (props.disabled ? "initial" : "pointer")};
   &:hover {
