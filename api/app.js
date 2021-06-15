@@ -18,7 +18,7 @@ const sequelize = require("./src/db");
 // } = require("./src/seeder/categories.js");
 // const { productsSeeder } = require("./src/seeder/products.js");
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
 app.name = "API";
 
 app.use(json());
@@ -42,7 +42,7 @@ sequelize
     // productsSeeder();
     // categoy_productSeder();
 
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || 4000, () => {
       console.log(`Server is running on Port ${PORT}`);
     });
   })
