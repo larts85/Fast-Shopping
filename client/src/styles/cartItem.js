@@ -92,5 +92,5 @@ export const Picker = styled.select`
   border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
   border-radius: ${(props) => Theme[props.border].borderRadius};
   background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
-  text-align: center;
+  cursor: pointer;
 `;

@@ -78,9 +78,16 @@ const CartItem = (props = {}) => {
             ))}
           </Picker>
         </Quantity>
-        <IconButton onClick={handleOnDelete}>
-          <DeleteForeverSharpIcon style={{ color: Theme[mode].colors.text }} />
-        </IconButton>
+        <DeleteForeverSharpIcon
+          style={{
+            color: Theme[mode].colors.text,
+            marginLeft: 10,
+            marginRight: 15,
+            alignSelf: "flex-end",
+            cursor: "pointer",
+          }}
+          onClick={handleOnDelete}
+        />
         <Price margin="auto" fontSize="21px" width="80px">
           {subTotal}
         </Price>
