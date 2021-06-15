@@ -56,6 +56,7 @@ function App() {
               mode={mode}
               darkMode={darkMode}
               rounded={rounded}
+              border={border}
               setDarkMode={setDarkMode}
               setRounded={setRounded}
             />

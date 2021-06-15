@@ -10,6 +10,7 @@ import { modifyTotal, setCreatedOrder } from "../store/order/order.actions";
 import { setFinishedOrder } from "../store/order/order.actions";
 import { finishOrder } from "../api/orders";
 import { emptyCart } from "../store/orderline/orderline.actions";
+import { emptyProducts } from "../store/products/products.actions";
 
 const Cart = ({ darkMode, rounded }) => {
   const dispatch = useDispatch();
@@ -85,6 +86,7 @@ const Cart = ({ darkMode, rounded }) => {
           dispatch(setCreatedOrder(data));
           dispatch(setFinishedOrder(userData));
           dispatch(emptyCart());
+          dispatch(emptyProducts());
         }
       })
       .finally(() => {

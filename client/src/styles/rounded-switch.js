@@ -1,6 +1,7 @@
 import { styled, Switch } from "@material-ui/core";
+import { Theme } from "./globalStyles";
 
-export const RoundedSwitch = styled(Switch)(({ theme, rounded, darkMode }) => ({
+export const RoundedSwitch = styled(Switch)(({ border, mode }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -19,10 +20,10 @@ export const RoundedSwitch = styled(Switch)(({ theme, rounded, darkMode }) => ({
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: darkMode ? "#000" : "#333333",
+    backgroundColor: Theme[mode].colors.icons,
     width: 32,
     height: 32,
-    borderRadius: rounded ? "50%" : 0,
+    borderRadius: Theme[border].borderRadius,
     "&:before": {
       content: "''",
       position: "absolute",

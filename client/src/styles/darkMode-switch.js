@@ -1,6 +1,7 @@
 import { styled, Switch } from "@material-ui/core";
+import { Theme } from "./globalStyles";
 
-export const DarkModeSwitch = styled(Switch)(({ theme, darkMode }) => ({
+export const DarkModeSwitch = styled(Switch)(({ mode }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -23,7 +24,7 @@ export const DarkModeSwitch = styled(Switch)(({ theme, darkMode }) => ({
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: darkMode ? "#000" : "#333333",
+    backgroundColor: Theme[mode].colors.icons,
     width: 32,
     height: 32,
     "&:before": {

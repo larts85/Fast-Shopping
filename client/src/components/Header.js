@@ -6,9 +6,11 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DarkModeSwitch } from "../styles/darkMode-switch.js";
 import { RoundedSwitch } from "../styles/rounded-switch";
+import { Theme } from "../styles/globalStyles";
 
 const Header = (props) => {
-  const { darkMode, mode, setDarkMode, rounded, setRounded } = props || {};
+  const { darkMode, mode, setDarkMode, rounded, setRounded, border } =
+    props || {};
   const location = useLocation();
   const { cart } = useSelector((state) => state.orderlines);
 
@@ -32,13 +34,13 @@ const Header = (props) => {
         <Actions>
           <form>
             <DarkModeSwitch
-              darkMode={darkMode}
+              mode={mode}
               checked={darkMode}
               onChange={(e) => changeMode(e, "colors")}
             />
             <RoundedSwitch
-              darkMode={darkMode}
-              rounded={rounded}
+              mode={mode}
+              border={border}
               checked={rounded}
               onChange={(e) => changeMode(e, "corners")}
             />
@@ -46,7 +48,12 @@ const Header = (props) => {
           {location.pathname === "/" && (
             <Link to={cart.length ? "/cart" : "/"}>
               <Badge badgeContent={cart.length} color="error">
-                <ShoppingCartIcon style={{ color: "grey", fontSize: 40 }} />
+                <ShoppingCartIcon
+                  style={{
+                    color: Theme[mode].colors.icons,
+                    fontSize: 40,
+                  }}
+                />
               </Badge>
             </Link>
           )}
