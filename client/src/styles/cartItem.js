@@ -27,15 +27,16 @@ export const Title = styled.div`
   width: 70%;
   padding-right: 10px;
   flex-grow: 1;
-  & h4 {
+  & h3 {
     font-weight: bold;
     text-align: left;
     margin: 0;
     margin-bottom: 10px;
   }
-  & h6 {
+  & h5 {
     margin: 0;
     text-align: left;
+    letter-spacing: 1px;
   }
   @media ${device.mobileL} {
     padding-right: 0;
@@ -82,8 +83,14 @@ export const Quantity = styled.div`
 export const Picker = styled.select`
   flex-grow: 1;
   outline: none;
-  width: 50px;
+  width: 60px;
   border: solid 1px;
-  padding-block: 0;
+  padding-block: 2px;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: ${(props) => Theme[props.mode]?.colors.text};
+  border-color: ${(props) => Theme[props.mode]?.colors.borderColor};
+  border-radius: ${(props) => Theme[props.border].borderRadius};
+  background-color: ${(props) => Theme[props.mode]?.colors.bgPrimary};
   text-align: center;
 `;

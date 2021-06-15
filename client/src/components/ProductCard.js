@@ -18,9 +18,10 @@ import {
 const ProductCard = (props) => {
   const { productData, darkMode, rounded } = props;
   const dispatch = useDispatch();
-  const [productOnCart, setProductOnCart] = useState(false);
+  const [runnedOut, setRunnedOut] = useState(false);
   const { cart } = useSelector((state) => state.orderlines);
   const [categories, setCategories] = useState("");
+  const [remaining, setRemaining] = useState(productData.stock);
 
   useEffect(() => {
     const prepareCategoriesToDisplay = () => {
@@ -37,10 +38,20 @@ const ProductCard = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    if (!productData.stock) {
-      setProductOnCart(true);
+  const checkForStock = (productId) => {
+    const { quantity } =
+      cart.find(({ productsId }) => productsId === productId) || {};
+    if (productData.stock === 0) {
+      setRunnedOut(true);
+    } else if (quantity && quantity >= productData.stock) {
+      setRunnedOut(true);
+    } else if (quantity) {
+      setRemaining(productData.stock - quantity);
     }
+  };
+
+  useEffect(() => {
+    checkForStock(productData.id);
     // eslint-disable-next-line
   }, [cart]);
 
@@ -84,15 +95,25 @@ const ProductCard = (props) => {
         <p>{productData?.description}</p>
       </Description>
       <CardFooter>
-        <span>
+        <span
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
           <Button
-            disabled={productOnCart}
+            disabled={runnedOut}
             onClick={addToCart}
             mode={darkMode}
             border={rounded}
           >
             Add to cart
           </Button>
+          <span>
+            {!runnedOut ? `${remaining} in stock` : "No products in stock"}
+          </span>
         </span>
         <Price>{productData?.price}</Price>
       </CardFooter>

@@ -55,8 +55,8 @@ const CartItem = (props = {}) => {
   return (
     <CardItem mode={mode} border={border}>
       <Title>
-        <h4>{name}</h4>
-        <h6>{categories}</h6>
+        <h3>{name}</h3>
+        <h5>{categories}</h5>
       </Title>
       <SecondHalf>
         <PriceWrapper>
@@ -65,7 +65,12 @@ const CartItem = (props = {}) => {
         </PriceWrapper>
         <Quantity>
           <span>Quantity</span>
-          <Picker onChange={handleOnChange} value={quantity}>
+          <Picker
+            onChange={handleOnChange}
+            value={quantity}
+            mode={mode}
+            border={border}
+          >
             {Array.apply(null, { length: stock }).map((n, i) => (
               <option key={n} value={i + 1}>
                 {i + 1}

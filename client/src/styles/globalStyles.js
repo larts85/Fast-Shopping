@@ -31,6 +31,7 @@ const Theme = {
       shadows: "",
       hover: "#b2b2b2",
       disable: "#000",
+      icons: "#000",
     },
   },
   lightMode: {
@@ -42,6 +43,7 @@ const Theme = {
       shadows: "2px 2px 2px black",
       hover: "#d3d3d3",
       disable: "#d3d3d3",
+      icons: "#333333",
     },
   },
   rounded: {

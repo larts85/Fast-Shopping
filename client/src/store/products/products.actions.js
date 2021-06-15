@@ -6,5 +6,10 @@ const setAllProducts = (products) => (dispatch) => {
     payload: products,
   });
 };
+const emptyProducts = () => (dispatch) => {
+  dispatch({
+    type: actions.EMPTY_PRODUCTS,
+  });
+};
 
-export { setAllProducts };
+export { setAllProducts, emptyProducts };
