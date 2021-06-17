@@ -28,6 +28,19 @@ const createProduct = async (req, res) => {
   }
 };
 
+const bulkCreateProducts = async (req, res) => {
+  const products = req.body || {};
+  try {
+    const createdProducts = await Products.bulkCreate(products);
+    if (createdProducts) {
+      res.status(200).send(createdProducts);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+    throw error;
+  }
+};
+
 const updateProductsStock = async (req, res) => {
   const orderlines = req.body || {};
   try {
@@ -53,4 +66,5 @@ module.exports = {
   updateProductsStock,
   getAllProducts,
   createProduct,
+  bulkCreateProducts,
 };

@@ -1,19 +1,12 @@
 const express = require("express");
-const Categories = require("../models/categories.models");
-
 const app = express();
+const {
+  createCategory,
+  getAllCategories,
+} = require("../controllers/categories.controller");
 
-app.post("/", (req, res) => {
-  console.log(req.query);
-  const { name } = req.query;
-  Categories.create({ name })
-    .then((category) => {
-      res.status(200).send(category);
-    })
-    .catch((error) => {
-      res.status(400).send(error);
-      throw error;
-    });
-});
+app.get("/", getAllCategories);
+
+app.post("/", createCategory);
 
 module.exports = app;
