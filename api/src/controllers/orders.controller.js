@@ -2,7 +2,7 @@ const Orderlines = require("../models/orderlines.models");
 const Orders = require("../models/orders.models");
 const { ORDER_NOT_CREATED } = require("../constants");
 const Products = require("../models/products.models");
-const axios = require("axios");
+const { updateProductsStock } = require("../api/requests");
 
 const getAllOrders = async (req, res) => {
   Orders.findAll({
@@ -60,14 +60,6 @@ const createOrder = async (req, res) => {
     res.status(400).send(error);
     throw error;
   }
-};
-
-const updateProductsStock = async (orderlines) => {
-  const { data: updatedProducts } = await axios.put(
-    "http://localhost:4000/products/stock",
-    orderlines
-  );
-  return updatedProducts;
 };
 
 module.exports = {
