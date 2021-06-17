@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
 const { database } = require("../config");
+const { herokuDB } = require("../heroku.db");
 
 const sequelize = new Sequelize(
-  `mysql://${database.username}:${database.password}@${database.host}:${database.port}/${database.database}`
+  `mysql://${herokuDB.username}:${herokuDB.password}@${herokuDB.host}:${database.port}/${herokuDB.database}`
 );
 
 module.exports = sequelize;
