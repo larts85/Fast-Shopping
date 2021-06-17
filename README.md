@@ -2,6 +2,12 @@
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and some other technologies. It is a simple shopping cart.
 
+### ***You can visit the API at this <a href='https://fast-shopping-cart.herokuapp.com/'>URL</a> and checkout this routes***
+- /products
+- /categories
+- /orders
+### ***The frontend will be hosting using **GH-Pages** soon. Now you can clone and install this repo and then start the client***
+
 #### TECHNOLOGIES
 
 
@@ -14,9 +20,9 @@
 
 ## First Steps
 
-- Open a console for for a client an other for the api,
-- run npm i and .then()
-- npm start in both of them
+- Open a console and clone this repo
+- run npm i and and npm start at client folder, this will consume the api hosted at <a href='https://heroku.com'>Heroku<a/>
+- if you want to use the api in localhost then run npm install and npm start in api folder and chage the API_PATH in the config file
 
 Frontend is running in localhost 3000 while backend does at port 4000.
 
