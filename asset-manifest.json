@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Fast-Shopping%20/static/css/main.29b26ada.chunk.css",
-    "main.js": "/Fast-Shopping%20/static/js/main.8b1e62f4.chunk.js",
-    "main.js.map": "/Fast-Shopping%20/static/js/main.8b1e62f4.chunk.js.map",
-    "runtime-main.js": "/Fast-Shopping%20/static/js/runtime-main.5297ef00.js",
-    "runtime-main.js.map": "/Fast-Shopping%20/static/js/runtime-main.5297ef00.js.map",
-    "static/js/2.d4f8a2a7.chunk.js": "/Fast-Shopping%20/static/js/2.d4f8a2a7.chunk.js",
-    "static/js/2.d4f8a2a7.chunk.js.map": "/Fast-Shopping%20/static/js/2.d4f8a2a7.chunk.js.map",
-    "static/js/3.1846ca08.chunk.js": "/Fast-Shopping%20/static/js/3.1846ca08.chunk.js",
-    "static/js/3.1846ca08.chunk.js.map": "/Fast-Shopping%20/static/js/3.1846ca08.chunk.js.map",
-    "index.html": "/Fast-Shopping%20/index.html",
-    "static/css/main.29b26ada.chunk.css.map": "/Fast-Shopping%20/static/css/main.29b26ada.chunk.css.map",
-    "static/js/2.d4f8a2a7.chunk.js.LICENSE.txt": "/Fast-Shopping%20/static/js/2.d4f8a2a7.chunk.js.LICENSE.txt"
+    "main.css": "/Fast-Shopping/client/static/css/main.29b26ada.chunk.css",
+    "main.js": "/Fast-Shopping/client/static/js/main.8b1e62f4.chunk.js",
+    "main.js.map": "/Fast-Shopping/client/static/js/main.8b1e62f4.chunk.js.map",
+    "runtime-main.js": "/Fast-Shopping/client/static/js/runtime-main.1325a545.js",
+    "runtime-main.js.map": "/Fast-Shopping/client/static/js/runtime-main.1325a545.js.map",
+    "static/js/2.6c8eaf29.chunk.js": "/Fast-Shopping/client/static/js/2.6c8eaf29.chunk.js",
+    "static/js/2.6c8eaf29.chunk.js.map": "/Fast-Shopping/client/static/js/2.6c8eaf29.chunk.js.map",
+    "static/js/3.1846ca08.chunk.js": "/Fast-Shopping/client/static/js/3.1846ca08.chunk.js",
+    "static/js/3.1846ca08.chunk.js.map": "/Fast-Shopping/client/static/js/3.1846ca08.chunk.js.map",
+    "index.html": "/Fast-Shopping/client/index.html",
+    "static/css/main.29b26ada.chunk.css.map": "/Fast-Shopping/client/static/css/main.29b26ada.chunk.css.map",
+    "static/js/2.6c8eaf29.chunk.js.LICENSE.txt": "/Fast-Shopping/client/static/js/2.6c8eaf29.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5297ef00.js",
-    "static/js/2.d4f8a2a7.chunk.js",
+    "static/js/runtime-main.1325a545.js",
+    "static/js/2.6c8eaf29.chunk.js",
     "static/css/main.29b26ada.chunk.css",
     "static/js/main.8b1e62f4.chunk.js"
   ]
