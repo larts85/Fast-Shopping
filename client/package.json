@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "http://larts85.github.io/Fast-Shopping/client",
+  "homepage": "http://larts85.github.io/fast-shopping",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
